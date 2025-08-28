@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon-32x32.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css">
+  <title>Vite App</title>
+</head>
+
+<body id="root"
+  class="font-josefin text-lg bg-[url(/assets/bg-mobile-light.jpg)] bg-no-repeat bg-size-[100%_200px] dark:bg-navy-950 dark:bg-[url(/assets/bg-mobile-dark.jpg)]">
+  <main class="mx-5 mt-10">
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="uppercase text-white tracking-[8px] font-bold text-2xl">todo</h1>
+      <img class="toggle-icon w-5 cursor-pointer dark:hidden" src="./assets/icon-moon.svg" alt="theme toggle icon">
+      <img class="toggle-icon w-5 cursor-pointer hidden dark:block" src="./assets/icon-sun.svg" alt="theme toggle icon">
+    </header>
+    <section id="input" class="bg-white dark:bg-navy-900 rounded-[6px] flex items-center gap-4 py-3 px-5">
+      <span class="rounded-full border-1 border-gray-300 w-5 h-5 mb-0.5 dark:border-purple-700"></span>
+      <form>
+        <input class="text-sm text-navy-850 font-medium outline-0 caret-blue-500 dark:text-purple-100" type="text"
+          id="input-bar" placeholder="Create a new todo..." role="button" required>
+      </form>
+    </section>
+    <section class="bg-white rounded-[6px] mt-5 shadow-md dark:bg-navy-900">
+      <ul id="tasks__ul">
+        <li class="task-list flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800">
+          <div
+            class="task-list__checkbox flex items-center rounded-full border-2 border-gray-300 p-1 cursor-pointer group-hover:border-linear-to transition-all dark:border-purple-800">
+            <svg class="checkbox-img dark:stroke-navy-900 fill-none stroke-2 w-[10px] h-[10px]"
+              xmlns="http://www.w3.org/2000/svg" width="11" height="9">
+              <path d="M1 4.304L3.696 7l6-6" />
+            </svg>
+          </div>
+          <p class="task-list__text text-sm flex-1 dark:text-gray-600 dark:hover:text-purple-100">Completed task
+            javascript</p>
+          <img class="task-list__delete w-4 h-4 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+            src="./assets/icon-cross.svg" alt="delete icon">
+        </li>
+      </ul>
+      <section class="flex justify-between text-sm text-gray-600 font-medium py-3 px-5">
+        <p>5 items left</p>
+        <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Clear
+          Completed</button>
+      </section>
+    </section>
+    <section
+      class="bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
+      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">All</button>
+      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
+      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
+    </section>
+    <section class="text-center font-medium text-sm text-gray-600 mt-10">
+      <p>Drag and drop to reorder list</p>
+    </section>
+  </main>
+  <script src="./src/main.js" type="module"></script>
+</body>
+
+</html>
