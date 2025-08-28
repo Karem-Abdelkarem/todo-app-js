@@ -1,17 +1,77 @@
-const toggleIcon = document.querySelectorAll(".toggle-icon");
-const htmlElement = document.querySelector("#root");
-console.log(htmlElement);
+import { appElement, inputField, ulElement } from "./scripts/elements";
 
-toggleIcon.forEach((icon) => {
-  icon.addEventListener("click", () => {
-    htmlElement.classList.toggle("dark");
-    console.log("clicked");
+export const toggleDarkMode = () => {
+  appElement.classList.toggle("dark");
+  const isDark = appElement.classList.contains("dark");
+  saveTodoInDB("darkTheme", isDark);
+};
+
+const fetchFromDB = (key) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+};
+
+const saveTodoInDB = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
+export const addTodo = () => {
+  const inputValue = inputField.value.trim();
+
+  if (!inputValue) {
+    alert("Please Enter a task");
+    return;
+  }
+
+  const newTodo = {
+    text: inputValue,
+    isCompleted: false,
+    id: Date.now(),
+  };
+
+  const tasks = fetchFromDB("tasks") || [];
+  tasks.unshift(newTodo);
+
+  saveTodoInDB("tasks", tasks);
+  renderTodos(tasks);
+  inputField.value = "";
+  inputField.focus();
+};
+
+const renderTodos = () => {
+  const tasks = fetchFromDB("tasks") || [];
+
+  let tasksList = "";
+
+  tasks.forEach((task) => {
+    const index = tasks.findIndex((t) => t.id === task.id);
+
+    tasksList += `
+    <li class="task-list ${
+      task.isCompleted ? "task-list-completed" : ""
+    } flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800">
+          <div
+            class="task-list__checkbox flex items-center rounded-full border-2 border-gray-300 p-1 cursor-pointer group-hover:border-linear-to transition-all dark:border-purple-800" role="button" tabindex="0" data-index="${index}">
+            <svg class="checkbox-img stroke-white dark:stroke-navy-900 fill-none stroke-2 w-[10px] h-[10px]"
+              xmlns="http://www.w3.org/2000/svg" width="11" height="9">
+              <path d="M1 4.304L3.696 7l6-6" />
+            </svg>
+          </div>
+          <p class="task-list__text text-sm flex-1 dark:text-gray-600 dark:hover:text-purple-100">${
+            task.text
+          }</p>
+          <img class="task-list__delete w-4 h-4 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+            src="./assets/icon-cross.svg" alt="delete icon" data-index="${index}">
+        </li>
+  `;
+    ulElement.innerHTML = tasksList;
   });
-});
+};
 
+// initEventControllers();
 /*
     TODO
-    [ ]addTasks
+    [x]addTodo
     [ ]toggleTasks
     [ ]deleteTasks
     [ ]sortingTasks
@@ -20,7 +80,7 @@ toggleIcon.forEach((icon) => {
     [ ]dragAndDropTasks
     [ ]updateUI
     [ ]initApp
-    [ ]renderTodos
+    [x]renderTodos
     [ ]filterTodos
     [ ]reorderTodos
 */
