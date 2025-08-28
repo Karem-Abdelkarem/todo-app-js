@@ -1,11 +1,21 @@
-import { addTodo, toggleDarkMode } from "../main";
+import { addTodo, deleteTodo, toggleDarkMode } from "../main";
 import { inputField, toggleIcon } from "./elements";
 
-// export const initEventControllers = () => {
-toggleIcon.forEach((icon) => {
-  icon.addEventListener("click", toggleDarkMode);
-});
-// };
-inputField.addEventListener("keydown", (e) => {
-  e.key === "Enter" && addTodo();
-});
+export const initTaskListners = () => {
+  document.querySelectorAll(".task-list__delete").forEach((icon) => {
+    icon.addEventListener("click", (e) => {
+      const index = parseInt(e.target.dataset.index);
+      deleteTodo(index);
+    });
+  });
+};
+
+export const initEventControllers = () => {
+  toggleIcon.forEach((icon) => {
+    icon.addEventListener("click", toggleDarkMode);
+  });
+
+  inputField.addEventListener("keydown", (e) => {
+    e.key === "Enter" && addTodo();
+  });
+};

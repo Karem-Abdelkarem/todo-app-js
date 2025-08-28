@@ -1,4 +1,13 @@
-import { appElement, inputField, ulElement } from "./scripts/elements";
+import {
+  appElement,
+  countElement,
+  inputField,
+  ulElement,
+} from "./scripts/elements";
+import {
+  initEventControllers,
+  initTaskListners,
+} from "./scripts/eventListners";
 
 export const toggleDarkMode = () => {
   appElement.classList.toggle("dark");
@@ -13,6 +22,16 @@ const fetchFromDB = (key) => {
 
 const saveTodoInDB = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data));
+};
+
+export const deleteTodo = (index) => {
+  const question = confirm("Are you sure you want to delete this task?");
+  if (!question) return;
+
+  const tasks = fetchFromDB("tasks") || [];
+  tasks.splice(index, 1);
+  saveTodoInDB("tasks", tasks);
+  renderTodos(tasks);
 };
 
 export const addTodo = () => {
@@ -66,14 +85,23 @@ const renderTodos = () => {
   `;
     ulElement.innerHTML = tasksList;
   });
+  initTaskListners();
+  getCounts();
 };
 
-// initEventControllers();
+const getCounts = () => {
+  const tasks = fetchFromDB("tasks");
+  const activeCount = tasks.filter((task) => !task.isCompleted).length;
+
+  countElement.textContent = `${activeCount} items left`;
+};
+
+initEventControllers();
 /*
     TODO
     [x]addTodo
     [ ]toggleTasks
-    [ ]deleteTasks
+    [x]deleteTodo
     [ ]sortingTasks
     [ ]deleteCompletedTasks
     [x]toggleDarkMode
@@ -83,4 +111,5 @@ const renderTodos = () => {
     [x]renderTodos
     [ ]filterTodos
     [ ]reorderTodos
+    [x]getCounts
 */
