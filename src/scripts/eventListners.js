@@ -1,5 +1,5 @@
-import { addTodo, deleteTodo, toggleDarkMode } from "../main";
 import { inputField, toggleIcon } from "./elements";
+import { addTodo, deleteTodo, toggleDarkMode } from "./utils";
 
 export const initTaskListners = () => {
   document.querySelectorAll(".task-list__delete").forEach((icon) => {
