@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-blue-500: #3a7bfdff;
+  --color-linear-from: #57ddffff;
+  --color-linear-to: #c058f3ff;
+  /* Light Theme */
+  --color-gray-50: #fafafaff;
+  --color-purple-300: #cacde8ff;
+  --color-gray-300: #d2d3dbff;
+  --color-gray-600: #9394a5ff;
+  --color-navy-850: #484b6aff;
+  /* Dark Theme */
+  --color-navy-900: #25273cff;
+  --color-navy-950: #161722ff;
+  --color-purple-100: #e4e5f1ff;
+  --color-purple-600: #5c5f7fff;
+  --color-purple-700: #4d5066ff;
+  --color-purple-800: #393a4cff;
+  /* Fonts */
+  --font-josefin: Josefin Sans, sans-serif;
+}
+
+@layer components {
+  .task-list-completed {
+    .task-list__checkbox {
+      background-image: linear-gradient(to bottom right, var(--color-linear-from), var(--color-linear-to));
+    }
+
+    .task-list__text {
+      text-decoration: line-through;
+      color: var(--color-gray-300);
+    }
+  }
+}
