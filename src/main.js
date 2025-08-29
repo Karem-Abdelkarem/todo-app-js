@@ -6,9 +6,9 @@ initEventControllers();
 /*
     TODO
     [x]addTodo
-    [ ]toggleTasks
+    [x]toggleTodo
     [x]deleteTodo
-    [ ]deleteCompletedTasks
+    [x]clearBtn
     [x]toggleDarkMode
     [x]initApp
     [x]renderTodos

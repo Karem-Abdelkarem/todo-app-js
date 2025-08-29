@@ -26,6 +26,14 @@ export const deleteTodo = (index) => {
   renderTodos(tasks);
 };
 
+export const toggleTodo = (index) => {
+  const tasks = fetchFromDB("tasks") || [];
+  tasks[index].isCompleted = !tasks[index].isCompleted;
+
+  saveTodoInDB("tasks", tasks);
+  renderTodos(tasks);
+};
+
 export const addTodo = () => {
   const inputValue = inputField.value.trim();
 
@@ -97,6 +105,13 @@ const getCounts = () => {
   const activeCount = tasks.filter((task) => !task.isCompleted).length;
 
   countElement.textContent = `${activeCount} items left`;
+};
+
+export const clearButton = () => {
+  const tasks = fetchFromDB("tasks");
+  const activeTodo = tasks.filter((task) => !task.isCompleted);
+  saveTodoInDB("tasks", activeTodo);
+  renderTodos(tasks);
 };
 
 export const initApp = () => {
