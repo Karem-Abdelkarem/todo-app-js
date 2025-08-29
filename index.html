@@ -40,10 +40,13 @@
       </section>
     </section>
     <section
-      class="bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
-      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">All</button>
-      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
-      <button class="cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
+      class="filter-btns bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
+      <button data-value="All"
+        class="filter-btn cursor-pointer active-btn hover:text-black transition-colors dark:hover:text-purple-100">All</button>
+      <button data-value="Active"
+        class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
+      <button data-value="Completed"
+        class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
     </section>
     <section class="text-center font-medium text-sm text-gray-600 mt-10">
       <p>Drag and drop to reorder list</p>

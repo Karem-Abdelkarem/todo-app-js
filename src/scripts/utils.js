@@ -57,9 +57,7 @@ export const addTodo = () => {
   inputField.focus();
 };
 
-const renderTodos = () => {
-  const tasks = fetchFromDB("tasks") || [];
-
+const renderTodos = (tasks) => {
   if (tasks.length === 0) {
     ulElement.innerHTML = `
         <li class="text-center text-gray-600 font-medium text-sm my-2">
@@ -77,9 +75,9 @@ const renderTodos = () => {
     const index = tasks.findIndex((t) => t.id === task.id);
 
     tasksList += `
-    <li class="task-list ${
+    <li draggable="true" class="task-list ${
       task.isCompleted ? "task-list-completed" : ""
-    } flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800">
+    } flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800 cursor-grab">
           <div
             class="task-list__checkbox flex items-center rounded-full border-2 border-gray-300 p-1 cursor-pointer group-hover:border-linear-to transition-all dark:border-purple-800" role="button" tabindex="0" data-index="${index}">
             <svg class="checkbox-img stroke-white dark:stroke-navy-900 fill-none stroke-2 w-[10px] h-[10px]"
@@ -114,7 +112,22 @@ export const clearButton = () => {
   renderTodos(tasks);
 };
 
+export const filterTodos = (e) => {
+  const tasks = fetchFromDB("tasks");
+  const currentFilter = e.target.dataset.value;
+  if (currentFilter === "Active") {
+    const activeTodo = tasks.filter((task) => !task.isCompleted);
+    renderTodos(activeTodo);
+  } else if (currentFilter === "Completed") {
+    const completedTodo = tasks.filter((task) => task.isCompleted);
+    renderTodos(completedTodo);
+  } else if (currentFilter === "All") {
+    renderTodos(tasks);
+  }
+};
+
 export const initApp = () => {
   fetchFromDB("darkTheme") && toggleDarkMode();
-  renderTodos();
+  const tasks = fetchFromDB("tasks");
+  renderTodos(tasks);
 };

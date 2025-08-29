@@ -1,8 +1,9 @@
-import { clearBtn, inputField, toggleIcon } from "./elements";
+import { clearBtn, filterBtns, inputField, toggleIcon } from "./elements";
 import {
   addTodo,
   clearButton,
   deleteTodo,
+  filterTodos,
   toggleDarkMode,
   toggleTodo,
 } from "./utils";
@@ -33,4 +34,17 @@ export const initEventControllers = () => {
   });
 
   clearBtn.addEventListener("click", () => clearButton());
+
+  filterBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterBtns.forEach((btn) => btn.classList.remove("active-btn"));
+      button.classList.add("active-btn");
+    });
+  });
+
+  filterBtns.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      filterTodos(e);
+    });
+  });
 };
