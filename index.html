@@ -15,8 +15,8 @@
 </head>
 
 <body id="root"
-  class="font-josefin text-lg bg-[url(/assets/bg-mobile-light.jpg)] bg-no-repeat bg-size-[100%_200px] dark:bg-navy-950 dark:bg-[url(/assets/bg-mobile-dark.jpg)]">
-  <main class="mx-5 mt-10">
+  class="font-josefin lg:text-lg lg:bg-[url(/assets/bg-desktop-light.jpg)] bg-[url(/assets/bg-mobile-light.jpg)] bg-no-repeat bg-size-[100%_200px] dark:bg-navy-950 dark:bg-[url(/assets/bg-mobile-dark.jpg)] dark:lg:bg-[url(/assets/bg-desktop-dark.jpg)]">
+  <main class="mx-5 sm:mx-auto mt-10 sm:max-w-[400px] md:max-w-[500px]">
     <header class="flex justify-between items-center mb-8">
       <h1 class="uppercase text-white tracking-[8px] font-bold text-2xl">todo</h1>
       <img class="toggle-icon w-5 cursor-pointer dark:hidden" src="./assets/icon-moon.svg" alt="theme toggle icon">
@@ -33,14 +33,23 @@
     <section class="bg-white rounded-[6px] mt-5 shadow-md dark:bg-navy-900">
       <ul id="tasks__ul">
       </ul>
-      <section class="flex justify-between text-sm text-gray-600 font-medium py-3 px-5">
+      <section class="flex items-center justify-between text-sm text-gray-600 font-medium py-3 px-5">
         <p class="count-tasks">0 items left</p>
+        <section
+          class="hidden filter-btns bg-white text-sm text-gray-600 font-bold lg:flex items-center justify-between gap-4 dark:bg-navy-900">
+          <button data-value="All"
+            class="filter-btn cursor-pointer text-blue-500 hover:text-black transition-colors dark:hover:text-purple-100">All</button>
+          <button data-value="Active"
+            class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
+          <button data-value="Completed"
+            class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
+        </section>
         <button class="clear-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Clear
           Completed</button>
       </section>
     </section>
     <section
-      class="filter-btns bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
+      class="filter-btns lg:hidden bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
       <button data-value="All"
         class="filter-btn cursor-pointer text-blue-500 hover:text-black transition-colors dark:hover:text-purple-100">All</button>
       <button data-value="Active"
