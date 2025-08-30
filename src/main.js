@@ -12,7 +12,7 @@ initEventControllers();
     [x]toggleDarkMode
     [x]initApp
     [x]renderTodos
-    [ ]filterTodos
+    [x]filterTodos
     [ ]reorderTodos
     [x]getCounts
 */

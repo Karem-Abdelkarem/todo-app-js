@@ -4,6 +4,7 @@ import {
   clearButton,
   deleteTodo,
   filterTodos,
+  handleReorder,
   toggleDarkMode,
   toggleTodo,
 } from "./utils";
@@ -20,6 +21,27 @@ export const initTaskListners = () => {
     checkbox.addEventListener("click", (e) => {
       const index = parseInt(e.currentTarget.dataset.index);
       toggleTodo(index);
+    });
+  });
+
+  let draggedIndex = null;
+  let droppedOnTaskIndex = null;
+
+  document.querySelectorAll(".task-list").forEach((el, index) => {
+    el.dataset.index = index;
+
+    el.addEventListener("dragstart", (e) => {
+      draggedIndex = e.target.dataset.index;
+      e.target.classList.add("opacity-50");
+    });
+    el.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+    el.addEventListener("drop", (e) => {
+      droppedOnTaskIndex = e.currentTarget.dataset.index;
+      e.target.classList.remove("opacity-50");
+
+      handleReorder(draggedIndex, droppedOnTaskIndex);
     });
   });
 };

@@ -126,6 +126,20 @@ export const filterTodos = (e) => {
   }
 };
 
+export const handleReorder = (fromIndex, toIndex) => {
+  fromIndex = Number(fromIndex);
+  toIndex = Number(toIndex);
+
+  const tasks = fetchFromDB("tasks") || [];
+  const draggedTask = tasks[fromIndex];
+
+  tasks.splice(fromIndex, 1);
+  tasks.splice(toIndex, 0, draggedTask);
+
+  saveTodoInDB("tasks", tasks);
+  renderTodos(tasks);
+};
+
 export const initApp = () => {
   fetchFromDB("darkTheme") && toggleDarkMode();
   const tasks = fetchFromDB("tasks");
