@@ -75,19 +75,25 @@ const renderTodos = (tasks) => {
     const index = tasks.findIndex((t) => t.id === task.id);
 
     tasksList += `
-    <li draggable="true" class="task-list ${
-      task.isCompleted ? "task-list-completed" : ""
-    } flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800 cursor-grab">
+    <li draggable="true" class="task-list flex items-center gap-4 py-3 px-5 border-b border-gray-300 group dark:border-purple-800 cursor-grab">
           <div
-            class="task-list__checkbox flex items-center rounded-full border-2 border-gray-300 p-1 cursor-pointer group-hover:border-linear-to transition-all dark:border-purple-800" role="button" tabindex="0" data-index="${index}">
+            class="task-list__checkbox ${
+              task.isCompleted
+                ? "bg-linear-to-br from-linear-from to-linear-to"
+                : ""
+            } flex items-center rounded-full border-2 border-gray-300 p-1 cursor-pointer group-hover:border-linear-to transition-all dark:border-purple-800" role="button" tabindex="0" data-index="${index}">
             <svg class="checkbox-img stroke-white dark:stroke-navy-900 fill-none stroke-2 w-[10px] h-[10px]"
               xmlns="http://www.w3.org/2000/svg" width="11" height="9">
               <path d="M1 4.304L3.696 7l6-6" />
             </svg>
           </div>
-          <p class="task-list__text text-sm flex-1 dark:text-gray-600 dark:hover:text-purple-100">${
-            task.text
-          }</p>
+          <p class="${
+            task.isCompleted
+              ? "line-through text-gray-300 dark:text-purple-600"
+              : ""
+          } text-sm flex-1 dark:text-purple-300 dark:hover:text-purple-100">${
+      task.text
+    }</p>
           <img class="task-list__delete w-4 h-4 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
             src="./assets/icon-cross.svg" alt="delete icon" data-index="${index}">
         </li>

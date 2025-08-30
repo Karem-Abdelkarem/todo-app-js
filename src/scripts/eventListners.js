@@ -24,6 +24,13 @@ export const initTaskListners = () => {
     });
   });
 
+  document.querySelectorAll(".task-list__checkbox").forEach((checkbox) => {
+    checkbox.addEventListener("keydown", (e) => {
+      const index = parseInt(e.currentTarget.dataset.index);
+      e.key === "Enter" && toggleTodo(index);
+    });
+  });
+
   let draggedIndex = null;
   let droppedOnTaskIndex = null;
 
@@ -59,8 +66,8 @@ export const initEventControllers = () => {
 
   filterBtns.forEach((button) => {
     button.addEventListener("click", () => {
-      filterBtns.forEach((btn) => btn.classList.remove("active-btn"));
-      button.classList.add("active-btn");
+      filterBtns.forEach((btn) => btn.classList.remove("text-blue-500"));
+      button.classList.add("text-blue-500");
     });
   });
 

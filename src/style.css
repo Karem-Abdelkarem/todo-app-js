@@ -22,20 +22,3 @@
   /* Fonts */
   --font-josefin: Josefin Sans, sans-serif;
 }
-
-@layer components {
-  .task-list-completed {
-    .task-list__checkbox {
-      background-image: linear-gradient(to bottom right, var(--color-linear-from), var(--color-linear-to));
-    }
-
-    .task-list__text {
-      text-decoration: line-through;
-      color: var(--color-gray-300);
-    }
-  }
-
-  .active-btn {
-    color: var(--color-blue-500);
-  }
-}
