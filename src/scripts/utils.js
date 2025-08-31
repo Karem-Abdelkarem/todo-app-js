@@ -58,7 +58,7 @@ export const addTodo = () => {
 };
 
 const renderTodos = (tasks) => {
-  if (tasks.length === 0) {
+  if (tasks === null) {
     ulElement.innerHTML = `
         <li class="text-center text-gray-600 font-medium text-sm my-2">
           <img class="h-44 grayscale-100 opacity-50 mx-auto pt-2" src="./assets/icon-empty.svg"
@@ -67,6 +67,14 @@ const renderTodos = (tasks) => {
         </li>
     `;
     return;
+  } else if (tasks.length === 0) {
+    ulElement.innerHTML = `
+        <li class="text-center text-gray-600 font-medium text-sm my-2">
+          <img class="h-44 grayscale-100 opacity-50 mx-auto pt-2" src="./assets/icon-empty.svg"
+            alt="empty state">
+          <p>Add your first task above!</p>
+        </li>
+    `;
   }
 
   let tasksList = "";
@@ -94,7 +102,7 @@ const renderTodos = (tasks) => {
           } text-sm flex-1 dark:text-purple-300 dark:hover:text-purple-100">${
       task.text
     }</p>
-          <img class="task-list__delete w-4 h-4 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+          <img class="task-list__delete w-4 h-4 cursor-pointer md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             src="./assets/icon-cross.svg" alt="delete icon" data-index="${index}">
         </li>
   `;

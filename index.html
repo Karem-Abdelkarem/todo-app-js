@@ -19,16 +19,26 @@
   <main class="mx-5 sm:mx-auto mt-10 sm:max-w-[400px] md:max-w-[500px]">
     <header class="flex justify-between items-center mb-8">
       <h1 class="uppercase text-white tracking-[8px] font-bold text-2xl">todo</h1>
-      <img class="toggle-icon w-5 cursor-pointer dark:hidden" src="./assets/icon-moon.svg" alt="theme toggle icon">
-      <img class="toggle-icon w-5 cursor-pointer hidden dark:block" src="./assets/icon-sun.svg" alt="theme toggle icon">
+      <img class="toggle-icon w-10 cursor-pointer dark:hidden p-2" src="./assets/icon-moon.svg" alt="theme toggle icon"
+        role="button">
+      <img class="toggle-icon w-10 cursor-pointer hidden p-2 dark:block" src="./assets/icon-sun.svg"
+        alt="theme toggle icon" role="button">
     </header>
     <section id="input" class="bg-white dark:bg-navy-900 rounded-[6px] flex items-center gap-4 py-3 px-5">
       <span class="rounded-full border-1 border-gray-300 w-5 h-5 mb-0.5 dark:border-purple-700"></span>
 
       <input data-input="input-field"
-        class="text-sm text-navy-850 font-medium outline-0 caret-blue-500 dark:text-purple-100" type="text"
+        class="flex-1 text-sm text-navy-850 font-medium outline-0 caret-blue-500 dark:text-purple-100" type="text"
         id="input-bar" placeholder="Create a new todo..." required>
 
+      <svg
+        class="add-btn w-[40px] h-[40px] stroke-gray-600 fill-gray-600 dark:stroke-purple-100 dark:fill-purple-100 p-2 cursor-pointer lg:hidden"
+        role="button" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 20 20">
+        <path
+          d="M5 11C4.44772 11 4 10.5523 4 10C4 9.44772 4.44772 9 5 9H15C15.5523 9 16 9.44772 16 10C16 10.5523 15.5523 11 15 11H5Z" />
+        <path
+          d="M9 5C9 4.44772 9.44772 4 10 4C10.5523 4 11 4.44772 11 5V15C11 15.5523 10.5523 16 10 16C9.44772 16 9 15.5523 9 15V5Z" />
+      </svg>
     </section>
     <section class="bg-white rounded-[6px] mt-5 shadow-md dark:bg-navy-900">
       <ul id="tasks__ul">
@@ -44,18 +54,19 @@
           <button data-value="Completed"
             class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
         </section>
-        <button class="clear-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Clear
+        <button
+          class="clear-btn cursor-pointer py-2.5 hover:text-black transition-colors dark:hover:text-purple-100">Clear
           Completed</button>
       </section>
     </section>
     <section
       class="filter-btns lg:hidden bg-white text-sm text-gray-600 font-bold flex items-center justify-center gap-4 py-3 shadow-md mt-5 rounded-[6px] dark:bg-navy-900">
       <button data-value="All"
-        class="filter-btn cursor-pointer text-blue-500 hover:text-black transition-colors dark:hover:text-purple-100">All</button>
+        class="filter-btn cursor-pointer text-blue-500 py-1 px-2 hover:text-black transition-colors dark:hover:text-purple-100">All</button>
       <button data-value="Active"
-        class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
+        class="filter-btn cursor-pointer py-1 px-2 hover:text-black transition-colors dark:hover:text-purple-100">Active</button>
       <button data-value="Completed"
-        class="filter-btn cursor-pointer hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
+        class="filter-btn cursor-pointer py-1 px-2 hover:text-black transition-colors dark:hover:text-purple-100">Completed</button>
     </section>
     <section class="text-center font-medium text-sm text-gray-600 mt-10">
       <p>Drag and drop to reorder list</p>

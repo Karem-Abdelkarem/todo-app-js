@@ -1,4 +1,10 @@
-import { clearBtn, filterBtns, inputField, toggleIcon } from "./elements";
+import {
+  addTaskBtn,
+  clearBtn,
+  filterBtns,
+  inputField,
+  toggleIcon,
+} from "./elements";
 import {
   addTodo,
   clearButton,
@@ -61,6 +67,7 @@ export const initEventControllers = () => {
   inputField.addEventListener("keydown", (e) => {
     e.key === "Enter" && addTodo();
   });
+  addTaskBtn.addEventListener("click", () => addTodo());
 
   clearBtn.addEventListener("click", () => clearButton());
 

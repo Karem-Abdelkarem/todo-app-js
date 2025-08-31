@@ -5,3 +5,4 @@ export const ulElement = document.querySelector("#tasks__ul");
 export const countElement = document.querySelector(".count-tasks");
 export const clearBtn = document.querySelector(".clear-btn");
 export const filterBtns = document.querySelectorAll(".filter-btn");
+export const addTaskBtn = document.querySelector(".add-btn");
