@@ -61,7 +61,7 @@ const renderTodos = (tasks) => {
   if (tasks.length === 0) {
     ulElement.innerHTML = `
         <li class="text-center text-gray-600 font-medium text-sm my-2">
-          <img class="h-44 grayscale-100 opacity-50 mx-auto pt-2" src="public/assets/icon-empty.svg"
+          <img class="h-44 grayscale-100 opacity-50 mx-auto pt-2" src="/assets/icon-empty.svg"
             alt="empty state">
           <p>Add your first task above!</p>
         </li>
